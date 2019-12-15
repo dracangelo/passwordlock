@@ -11,3 +11,11 @@ def __init__(self,first_name,last_name,phone_number,email):
     self.phone_number = phone_number
     self.email = email
 
+def save_user_details(self):
+    """
+    saves into user array
+    """
+    user.user_array.append(self)
+
+
+
