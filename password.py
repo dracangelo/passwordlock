@@ -11,10 +11,14 @@ class Password:
         self.password = password
         self.email = email
 
-    def save_password(self)
+    def save_password(self):
         """
         save password in password array
         """
-        password.Password_array.append(self)
+        Password.Password_array.append(self)
+
+    @classmethod
+    def display_password(cls):
+        return cls.Password_array
 
 
