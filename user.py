@@ -18,4 +18,9 @@ def save_user_details(self):
     user.user_array.append(self)
 
 
-
+@classmethod
+def display_user(cls):
+    """
+    returns array
+    """
+    return cls.user_array
