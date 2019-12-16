@@ -35,22 +35,39 @@ class TestPassword(unit.TestCase):
     class defines test cases while testCase  creates a test case
     """
 
-    def test_check_user(self):
-        """
-        tests whether the login function works as expected
-        """
-        self.new_user = User('Drac', 'Angelo', 'memedank2')
-        self.new_user.save_user()
-        user2 = User('Ken', 'Ng\'ang\'a', 'murigi')
-        user2.save_user()
 
-        for User in User.user_list:
-            if user.first_name == user2.first_name and user.password == user2.password:
-                current_user == first_name
-            
-            return current_user
+	def test_check_user(self):
+		'''
+		Function to test whether the login in function check_user works as expected
+		'''
+		self.new_user = User('drac','Angelo','memedank2')
+		self.new_user.save_user()
+		user2 = User('Ken','Ng\'ang\'a','murigi')
+		user2.save_user()
 
-            self.assertEqual(current_user, password.check_user(user2.password, user2.first_name))
+		for user in User.users_list:
+			if user.first_name == user2.first_name and user.password == user2.password:
+				current_user = user.first_name
+		return current_user
+
+		self.assertEqual(current_user,Credential.check_user(user2.password,user2.first_name))
+
+    def setUp(self):
+        """
+        creates a password for the account before each test
+        """
+        self.new_password = password('Drac','instagram','Alucard','vokeee')
+
+    def test__init__(self):
+        '''
+        test if initialization of password is done correctly done
+        '''
+        self.assertEqual(self.new_password.user_name,'Drac')
+        self.assertEqual(self.new_password.user.media_name,'instagram')
+        self.assertEqual(self.new_password.user.account_name,'Alucard')
+        self.assertEqual(self.new_password.password,'vokeee')
+
+    
 
 if __name__ == '__main__':
     unittest.main()
