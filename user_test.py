@@ -110,7 +110,7 @@ class TestPassword(unit.TestCase):
         reddit = credential('vokee','reddit','dankmemmer','memememe')
         reddit.save_credentials()
         find_credential = None
-        for credential in credential.user_credentials_list:
+        for credential in credential.user_credential_list:
             find_credential = credential_search(credential.media_name)
             return pyperclip.copy(find_credential.credential)
         credential.copy_credential(self.new_credential.media_name)
