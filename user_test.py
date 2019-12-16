@@ -67,7 +67,14 @@ class TestPassword(unit.TestCase):
         self.assertEqual(self.new_password.user.account_name,'Alucard')
         self.assertEqual(self.new_password.password,'vokeee')
 
-    
+    def test_save_password(self):
+        '''
+        check if password is saved in password array
+        '''
+        self.new_password.test_save_password()
+        reddit = password('vokee','reddit','dankmemmer','memememe')
+        reddit.test_save_password()
+        self.assertEqual(len(Password.password_list), 2)
 
 if __name__ == '__main__':
     unittest.main()
