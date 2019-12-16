@@ -67,3 +67,31 @@ class Credential:
         '''
         gen_pass = ''.join(rndom.choice(char) for _ in range(size))
         return gen_pass
+    
+    @classmethod
+    def display_credentials(cls,user_name):
+        '''
+        display list of saved credentials
+        '''
+        user_credentials_list = []
+        for credential in cls.credentials_list:
+            if credential.user_name == user_name:
+                user_credentials_list.append(credential)
+            return user_credentials_list
+        
+    @classmethod
+    def search(cls, media_name):
+        """
+        takes in a media_name and returns the site credentials
+        """
+        for Credential in cls.credentials_list:
+            if credential.media_name == media_name:
+                return Credential
+            
+    @classmethod
+    def copy_credential(cls, media_name):
+        '''
+		Class method that copies a credential's info after the credential's site name is entered
+		'''
+        find_credential = Credential.search(media_name)
+        return pyperclip.copy(find_credential.password)
