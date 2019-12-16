@@ -54,7 +54,7 @@ class Credential:
         Method to define the properties for each user object will hold.
         """
         self.user_name = user_name
-        self.site_name = site_name
+        self.media_name = media_name
         self.account_name = account_name
         self.password = password
 
@@ -85,7 +85,7 @@ class Credential:
     @classmethod
     def search(cls, media_name):
         """
-        takes in a media_name and returns the site credentials
+        takes in a media_name and returns the media credentials
         """
         for Credential in cls.credentials_list:
             if credential.media_name == media_name:
@@ -94,7 +94,7 @@ class Credential:
     @classmethod
     def copy_credential(cls, media_name):
         """
-        Class method that copies a credential's info after the credential's site name is entered
+        Class method that copies a credential's info after the credential's media name is entered
         """
         find_credential = Credential.search(media_name)
         return pyperclip.copy(find_credential.password)
