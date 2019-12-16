@@ -15,7 +15,7 @@ def save_user_details(self):
     """
     saves into user array
     """
-    user.user_array.append(self)
+    User.user_list.append(self)
 
 
 @classmethod

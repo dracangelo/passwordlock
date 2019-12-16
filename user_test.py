@@ -76,5 +76,13 @@ class TestPassword(unit.TestCase):
         reddit.test_save_password()
         self.assertEqual(len(Password.password_list), 2)
 
+	def tearDown(self):
+        '''
+        this clears the password list after test
+        '''
+        Password.password_list = []
+        User.user_list =[]
+        
+
 if __name__ == '__main__':
     unittest.main()
