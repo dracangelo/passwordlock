@@ -94,5 +94,15 @@ class TestPassword(unit.TestCase):
 		gmail.save_password()
         self.assertEqual(len(password.display_password(reddit.user_name), 2))
 
+    def test_search(self):
+        """
+        check if the method returns the correct method
+        """
+        self.new_password.save_password('vokee','reddit','dankmemmer','memememe')
+        reddit = password()
+        reddit.save_password()
+        password_exists = password.search('reddit')
+        self.assertEqual(password_exists,reddit)
+
 if __name__ == '__main__':
     unittest.main()
