@@ -34,8 +34,6 @@ class TestPassword(unit.TestCase):
     """
     class defines test cases while testCase  creates a test case
     """
-
-
 	def test_check_user(self):
 		'''
 		Function to test whether the login in function check_user works as expected
@@ -90,7 +88,7 @@ class TestPassword(unit.TestCase):
         self.new_password.save_password()
         reddit = password('vokee','reddit','dankmemmer','memememe')
         reddit.save_password()
-        gmail = password('Jane','Gmail','maryjoe','pswd200')
+        gmail = password('ruoey','Gmail','vokee','draxx')
 		gmail.save_password()
         self.assertEqual(len(password.display_password(reddit.user_name), 2))
 
@@ -98,11 +96,25 @@ class TestPassword(unit.TestCase):
         """
         check if the method returns the correct method
         """
-        self.new_password.save_password('vokee','reddit','dankmemmer','memememe')
-        reddit = password()
+        self.new_password.save_password()
+        reddit = password('vokee','reddit','dankmemmer','memememe')
         reddit.save_password()
         password_exists = password.search('reddit')
         self.assertEqual(password_exists,reddit)
+
+    def test_copy_password(self):
+        """
+        test if the password is copied correctly
+        """
+        self.new_password.save_password()
+        reddit = password('vokee','reddit','dankmemmer','memememe')
+        reddit.save_password()
+        find_password = None
+        for password in password.user_password_list:
+            find_password = password_search(password.media_name)
+            return pyperclip.copy(find_password.password)
+        password.copy_password(self.new_password.media_name)
+        self.assertEqual('memememe',pyperclip.paste())
 
 if __name__ == '__main__':
     unittest.main()
