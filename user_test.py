@@ -27,3 +27,18 @@ class TestUser(unittest.TestCase):
             self.new_user.save_user()
             self.assertEqual(len(User.user_list),1)
 
+class TestPassword(unit.TestCase):
+            """
+            class defines test cases while testCase  creates a test case
+            """
+            def test_check_user(self):
+                """
+                tests whether the login function works as expected
+                """
+                self.new_user = User ('Drac','Angelo','memedank2')
+                self.new_user.save_user()
+                user2 = User('Ken','Ng\'ang\'a','murigi')
+		        user2.save_user()
+
+if __name__ ==  '__main__':
+    unittest.main()
