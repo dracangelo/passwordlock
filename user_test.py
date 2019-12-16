@@ -96,9 +96,9 @@ class TestPassword(unit.TestCase):
         """
         check if the method returns the correct method
         """
-        self.new_credential.save_credentials()
+        self.new_credential.sa()
         reddit = credential('vokee','reddit','dankmemmer','memememe')
-        reddit.save_credentials()
+        reddit.sa()
         credential_exists = credential.search('reddit')
         self.assertEqual(credential_exists,reddit)
 
@@ -106,9 +106,9 @@ class TestPassword(unit.TestCase):
         """
         test if the credential is copied correctly
         """
-        self.new_credential.save_credentials()
+        self.new_credential.sa()
         reddit = credential('vokee','reddit','dankmemmer','memememe')
-        reddit.save_credentials()
+        reddit.sa()
         find_credential = None
         for credential in credential.user_credential_list:
             find_credential = credential_search(credential.media_name)
