@@ -73,7 +73,7 @@ class TestPassword(unit.TestCase):
         '''
         self.new_password.test_save_password()
         reddit = password('vokee','reddit','dankmemmer','memememe')
-        reddit.test_save_password()
+        reddit.save_password()
         self.assertEqual(len(Password.password_list), 2)
 
 	def tearDown(self):
@@ -82,7 +82,17 @@ class TestPassword(unit.TestCase):
         '''
         Password.password_list = []
         User.user_list =[]
-        
+
+    def test_display_password(self):
+        '''
+		Test to check if the display_credentials method, displays the correct credentials.
+		'''
+        self.new_password.save_password()
+        reddit = password('vokee','reddit','dankmemmer','memememe')
+        reddit.save_password()
+        gmail = password('Jane','Gmail','maryjoe','pswd200')
+		gmail.save_password()
+        self.assertEqual(len(password.display_password(reddit.user_name), 2))
 
 if __name__ == '__main__':
     unittest.main()
