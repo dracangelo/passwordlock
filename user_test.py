@@ -1,120 +1,62 @@
-import unittest
+import unittest ##import unittest module
+from user import User ##import user class from user.py file
 import pyperclip
-from user import User
-
 
 class TestUser(unittest.TestCase):
-    """
-    testcase helps in createng text cases
-    """
-
     def setUp(self):
-        """
-        create a user account before each test
-        """
-        self.new_user = User('Drac', 'Angelo', 'memedank2')
-
-    def test__init__(self):
-        """
-        test if the initialization of the user has been done correctly
-        """
-        self.assertEqual(self.new_user.first_name, 'Drac')
-        self.assertEqual(self.new_user.last_name, 'Angelo')
-        self.assertEqual(self.new_password.password, 'memedank2')
-
+        '''
+        method to run before each test case
+        '''
+        self.new_user = User("mary","mbugua","nish","0789755096","mary@gmail.com","lovepy") #create user object
+    def tearDown(self):
+        '''
+        cleans up after each test case has 
+        been executed
+        '''
+        User.user_list = []
+    def test_init(self):
+        '''
+        to test if object is initialised properly
+        '''
+        self.assertEqual(self.new_user.first_name,"mary")
+        self.assertEqual(self.new_user.last_name,"mbugua")
+        self.assertEqual(self.new_user.user_name,"nish")
+        self.assertEqual(self.new_user.phone_number,"0789755096")
+        self.assertEqual(self.new_user.email,"mary@gmail.com")
+        self.assertEqual(self.new_user.password,"lovepy") 
     def test_save_user(self):
-        '''
-        test if user's info has been saved inthe user's list
-        '''
+        """
+         to test if user object is saved
+         into user list
+        """
         self.new_user.save_user()
-        self.assertEqual(len(User.user_list), 1)
-
-
-class TestPassword(unit.TestCase):
-    """
-    class defines test cases while testCase  creates a test case
-    """
-	def test_check_user(self):
-		'''
-		Function to test whether the login in function check_user works as expected
-		'''
-		self.new_user = User('drac','Angelo','memedank2')
-		self.new_user.save_user()
-		user2 = User('Ken','Ng\'ang\'a','murigi')
-		user2.save_user()
-
-		for user in User.users_list:
-			if user.first_name == user2.first_name and user.password == user2.password:
-				current_user = user.first_name
-		return current_user
-
-		self.assertEqual(current_user,Credential.check_user(user2.password,user2.first_name))
-
-    def setUp(self):
+        self.assertEqual(len(User.user_list),1)
+    def test_save_multipleuser(self):
         """
-        creates a password for the account before each test
+         to test if we can save multiple users
+         to the user list
         """
-        self.new_credential = credential('Drac','instagram','Alucard','vokeee')
-
-    def test__init__(self):
-        '''
-        test if initialization of credential is done correctly done
-        '''
-        self.assertEqual(self.new_credential.user_name,'Drac')
-        self.assertEqual(self.new_credential.user.media_name,'instagram')
-        self.assertEqual(self.new_credential.user.account_name,'Alucard')
-        self.assertEqual(self.new_credential.password,'vokeee')
-
-    def test_save_credentials(self):
-        '''
-        check if password is saved in password array
-        '''
-        self.new_credential.save_credentials()
-        reddit = password('vokee','reddit','dankmemmer','memememe')
-        reddit.save_credentials()
-        self.assertEqual(len(Credential.credentials_list), 2)
-
-	def tearDown(self):
-        '''
-        this clears the credentials list after test
-        '''
-        credential.credentials_list = []
-        User.user_list =[]
-
-    def test_display_credentials(self):
-        '''
-		Test to check if the display_credentials method, displays the correct credentials.
-		'''
-        self.new_credential.save_credentials()
-        reddit = credential('vokee','reddit','dankmemmer','memememe')
-        reddit.save_credentials()
-        gmail = credential('ruoey','Gmail','vokee','draxx')
-		gmail.save_credentials()
-        self.assertEqual(len(credential.display_credentials(reddit.user_name), 2))
-
-    def test_search(self):
+        self.new_user.save_user()
+        test_user = User("testfirst","testlast","testusername","0712345678","test@user.com","testpassword")
+        test_user.save_user()
+        self.assertEqual(len(User.user_list),2)
+    def test_display_allusers(self):
         """
-        check if the method returns the correct method
+        test for method that returns
+        all users saved
         """
-        self.new_credential.sa()
-        reddit = credential('vokee','reddit','dankmemmer','memememe')
-        reddit.sa()
-        credential_exists = credential.search('reddit')
-        self.assertEqual(credential_exists,reddit)
+        self.assertEqual(User.display_allusers(),User.user_list) 
+    def test_generate_randompass(self):
+        """
+         test for method that generates a random password
+         and returns a string
+        """
 
-    def test_copy_credential(self):
-        """
-        test if the credential is copied correctly
-        """
-        self.new_credential.sa()
-        reddit = credential('vokee','reddit','dankmemmer','memememe')
-        reddit.sa()
-        find_credential = None
-        for credential in credential.user_credential_list:
-            find_credential = credential_search(credential.media_name)
-            return pyperclip.copy(find_credential.credential)
-        credential.copy_credential(self.new_credential.media_name)
-        self.assertEqual('memememe',pyperclip.paste())
+        self.new_user.save_user()
+        test_user = User("testfirst","testlast","testusername","0712345678","test@user.com","testpassword")
+        test_user.save_user()
+        randompass_generated = User.generate_randompass()
+        self.assertEqual(str(randompass_generated),str(randompass_generated))
 
 if __name__ == '__main__':
     unittest.main()
