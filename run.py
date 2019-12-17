@@ -63,7 +63,7 @@ def display_allcredentials():
 
 
 def main():
-    print("Hello! Welcome to the PasswordLocker application.\n To proceed,Use these short codes: \n ca - create an account using your own password \n ra - create an account using a randomly generated  password \n ex - exit the application")
+    print("Hello! Welcome to the PasswordLock application.\n To proceed,Use these short codes: \n ca - create an account using your own password \n ra - create an account using a randomly generated  password \n ex - exit the application")
     short_code = input().lower()
     while True:
 
